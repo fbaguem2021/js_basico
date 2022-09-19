@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple 1</title>
+</head>
+<style>
+.retornar {
+    color: black;
+    font-weight: normal;
+}
+button {
+    margin-left: 20px;
+}
+div p {
+    position: relative;
+    margin-left: 20px;
+}
+input {
+    position: absolute;
+    left: 0;
+    border-style: none;
+    border-bottom: 1px solid;
+    margin-left: 100px;
+}
+#result {
+    margin-left: 20px;
+}
+
+</style>
+<script>
+    function saludar() {
+        const tbName = document.getElementById("tbName");
+        const tbSurname = document.getElementById("tbSurname");
+        const result = document.getElementById("result");
+
+        var fullName = tbName.value + " " + tbSurname.value;
+        result.innerHTML += fullName;
+    }
+</script>
+<body>
+    <h2><a class="retornar" href="index.html">< Regresar</a></h1>
+    <div>
+        <p>
+            Nombre:
+            <input id="tbName" type="text" required minlength="4" maxlength="18" size="20">
+        </p>
+        <p>
+            Apellidos:
+            <input id="tbSurname" type="text" required minlength="4" maxlength="18" size="20">
+        </p>
+    </div>
+    <button onclick="saludar()">Saludar</button>
+    <p id="result">Your name is: </p>
+          
+</body>
+</html>
