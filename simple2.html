@@ -8,14 +8,76 @@
 </head>
 <style>
 .retornar {
-    color: black;
-    font-weight: normal;
+  color: black;
+  font-weight: normal;
+}
+div > p {
+  position: relative;
+  margin-left: 20px;
+}
+input {
+  position: absolute;
+  left: 0;
+  margin-left: 100px;
+  border-style: none;
+  border-bottom: 1px solid;
+}
+button {
+  margin-left: 180px;
 }
 </style>
 <script>
-
+function calculate() {
+  if (checkValues() == true) {
+    const base = getBase().value;
+    const alto = getHeight().value;
+    const ancho = getWidth().value;
+    
+    var volumen = base*alto*ancho;
+    var str = volumen+"cm3 ";
+    volumen /= 1000;
+    str += "| "+volumen+"L"
+    document.getElementById("result").innerHTML = "Resultado: "+ str;
+    
+  } else {
+    alert("Ningun valor debe ser menor o igual a 0!!")
+  }
+}
+function checkValues() {
+  if (getBase().value <= 0 || getHeight().value <= 0 || getWidth().value <= 0) {
+    return false;
+  } else {
+    return true;
+  }
+}
+function getBase() {
+  return document.getElementById("tbBase")
+}
+function getHeight() {
+  return document.getElementById("tbAlto")
+}
+function getWidth() {
+  return document.getElementById("tbAncho")
+}
 </script>
 <body>
-    <h2><a class="retornar" href="index.html">< Regresar</a></h1>
+  <h2><a class="retornar" href="index.html">< Regresar</a></h1>
+  <h3>Obtener volumen en cm3 y en litros</h3>
+  <div>
+    <p>
+      Base (cm): 
+      <input id="tbBase" type="number" step="any" min="0" value="0" required size="20">
+    </p>
+    <p>
+      Altura (cm): 
+      <input id="tbAlto" type="number" step="any" min="0" value="0" required size="20">
+    </p>
+    <p>
+      Anchura (cm): 
+      <input id="tbAncho" type="number" step="any" min="0" value="0" required size="20">
+      <button onclick="calculate()">Calcular</button>
+    </p>
+  </div>
+  <p id="result">Resultado: </p>
 </body>
 </html>
