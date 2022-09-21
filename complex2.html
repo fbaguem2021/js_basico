@@ -75,17 +75,17 @@ input {
 </body>
 <script>
 function Car(brand, color, plate) {
-  	this.brand = brand;
-  	this.color = color;
-    this.plate = plate;
+  	this.brand = brand || "[no introducido]";
+  	this.color = color || "[no introducido]";
+    this.plate = plate || "[no introducido]";
     this.toString = function carToString() {
     	return `\n    Marca: ${this.brand}\n    Color: ${this.color}\n    Matricula: ${this.plate}`;
     }
 }
 	function Person(name, age, dni, car) {
-  	this.name = name;
-    this.age = age;
-    this.dni = dni;
+  	this.name = name || "[no introducido]";
+    this.age = age   || "[no introducido]";
+    this.dni = dni   || "[no introducido]";
     this.car = car;
     this.toString = function personToString() {
     	return `Nombre: ${this.name}\nEdad: ${this.age}\nDni: ${this.dni}\nCotxe -> ${this.car.toString()}`;
@@ -106,6 +106,7 @@ function createPerson() {
 function btnclick() {
   	const person = createPerson();
     alert(person.toString());
+    // document.getElementById("txt").innerHTML = createPerson().toString()
 }
 </script>
 </html>
