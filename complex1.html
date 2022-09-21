@@ -4,9 +4,60 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Somplex 1</title>
+    <title>Complex 1</title>
 </head>
+<style>
+div > div > p {
+    position: relative;
+    margin-left: 10px;
+}
+input {
+    border-style: none;
+    border-bottom: 1px solid;
+    margin-left: 100px;
+}
+.input-element {
+    position: absolute;
+    left: 0;
+    margin-left: 110px;
+}
+</style>
 <body>
-    
+    <div>
+        <div>
+            <p>Marca de cotxe: 
+                <input class="input-element" id="marca" type="text" required minlength="4" maxlength="18" size="20">
+            </p>
+        </div>
+        <div>
+            <p>Matricula: 
+                <input class="input-element" id="plate" type="text" required minlength="4" maxlength="18" size="20">
+            </p>
+        </div>
+        <div>
+            <p>Color: 
+                <select class="input-element" id="color" name="colors">
+                    <option value="vermell">Vermell</option>
+                    <option value="blau">Blau</option>
+                    <option value="vard">Vard</option>
+                    <option value="blanc">Blanc</option>
+                    <option value="negre">Negre</option>
+                </select>
+            </p>
+        </div>
+        <button onclick="btnclick()">Mostrar detos</button>
+        <p id="txt">Hola</p>
+    </div>
 </body>
+<script>
+    function btnclick() {
+        let cotxe = {
+        marca: document.getElementById("marca").value,
+        plate: document.getElementById("plate").value,
+        color: document.getElementById("color").value
+        };
+        let str = "El teu cotxe es el "+cotxe.marca+" de color "+cotxe.color+" i matricula "+cotxe.plate;
+        document.getElementById("txt").innerHTML = str;
+    }
+</script>
 </html>
