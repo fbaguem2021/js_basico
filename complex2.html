@@ -6,7 +6,106 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Complex 2</title>
 </head>
+<style>
+div > p {
+    position: relative;
+    margin-left: 10px;
+}
+input {
+    border-style: none;
+    border-bottom: 1px solid;
+    margin-left: 100px;
+}
+.person-input-element {
+    position: absolute;
+    left: 0;
+    margin-left: 50px;
+}
+.car-input-element {
+    position: absolute;
+    left: 0;
+    margin-left: 110px;
+}
+</style>
 <body>
-    
+    <div>
+        <h4>Persona:</h4>
+        <div>
+            <p>Nom: 
+                <input id="name" class="person-input-element" type="text">
+            </p>
+        </div>
+        <div>
+            <p>Edat:
+                <input id="age"  class="person-input-element" type="number" step="any" min="0" value="0">
+            </p>
+        </div>
+        <div>
+            <p>Dni:
+                <input id="dni"  class="person-input-element" type="text" required maxlength="9" >
+            </p>
+        </div>
+    </div>
+    <div>
+        <h4>Cotxe:</h4>
+        <div>
+            <p>Marca de cotxe: 
+                <input id="brand" class="car-input-element" type="text" required minlength="4" maxlength="18" size="20">
+            </p>
+        </div>
+        <div>
+            <p>Matricula: 
+                <input id="plate" class="car-input-element" type="text" required minlength="4" maxlength="18" size="20">
+            </p>
+        </div>
+        <div>
+            <p>Color: 
+                <select id="color" class="car-input-element" name="colors">
+                    <option value="vermell">Vermell</option>
+                    <option value="blau">Blau</option>
+                    <option value="vard">Vard</option>
+                    <option value="blanc">Blanc</option>
+                    <option value="negre">Negre</option>
+                </select>
+            </p>
+        </div>
+        <button onclick="btnclick()">Mostrar detos</button>
+        <p id="txt"></p>
+    </div>
 </body>
+<script>
+function Car(brand, color, plate) {
+  	this.brand = brand;
+  	this.color = color;
+    this.plate = plate;
+    this.toString = function carToString() {
+    	return `\n    Marca: ${this.brand}\n    Color: ${this.color}\n    Matricula: ${this.plate}`;
+    }
+}
+	function Person(name, age, dni, car) {
+  	this.name = name;
+    this.age = age;
+    this.dni = dni;
+    this.car = car;
+    this.toString = function personToString() {
+    	return `Nombre: ${this.name}\nEdad: ${this.age}\nDni: ${this.dni}\nCotxe -> ${this.car.toString()}`;
+    }
+}
+function createCar() {
+  	const brand = document.getElementById("brand").value;
+    const color = document.getElementById("color").value;
+    const plate = document.getElementById("plate").value;
+    return new Car(brand, color, plate);
+}
+function createPerson() {
+  	const name = document.getElementById("name").value;
+    const age = document.getElementById("age").value;
+    const dni = document.getElementById("dni").value;
+    return new Person(name, age, dni, createCar())
+}
+function btnclick() {
+  	const person = createPerson();
+    alert(person.toString());
+}
+</script>
 </html>
